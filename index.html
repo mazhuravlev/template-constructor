@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8' />
+    <title>Конструктор шаблонов</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src='js/jquery-3.2.1.min.js'></script>
+    <script src='jquery-ui-1.12.1.custom/jquery-ui.min.js'></script>
+    <script src='bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+    <script src='bootstrap-3.3.7-dist/js/npm.js'></script>
+    <script src='js/scripts.js'></script>
+    <script src='js/bush.js'></script>
+</head>
+<body class='body-background'>
+    <div id='TitlePage' class='page'>
+        <div id='copyrights'>
+            <em>
+                Конструктор шаблонов технических требований. © ООО "<a href='https://www.pik.ru/'>ПИК-Проект</a>", 2017
+            </em>
+        </div>
+
+        <!-- https://www.w3schools.com/bootstrap/bootstrap_modal.asp -->
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Добавление записи</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Выберите нужный вам тип записи:</p>
+                        <select id="newNodeType" class='form-control'>
+                            <option value="reqItem">Требование</option>
+                            <option value="reqGroup">Раздел требований</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="modWinAccept" type="button" class="btn btn-primary" data-dismiss="modal">Добавить</button>
+                        <button id="modWinCancel" type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form>
+            <div class='blockTitle'>
+                <h3>УТВЕРЖДАЮ:</h3>
+                <p>ЗАКАЗЧИК</p>
+            </div>
+            <div class='right'>
+                <div id='customerInfo' class='userInfo'>
+                    <input id='customerPost' class='form-control'
+                           placeholder='Должность заказчика' />
+                    <input id='customerName' class='form-control'
+                           placeholder='ФИО заказчика' />
+                    <input id='datepicker' class='form-control'
+                           placeholder='Дата утверждения' />
+                </div>
+            </div>
+            <div id='documentTitle' class='documentNameOrAddress'>
+                <input id='documentName' class='form-control'
+                       placeholder='Наименование документа' />
+                <input id='objectAddress' class='form-control'
+                       placeholder='Адрес объекта' />
+            </div>
+
+            <div class='blockTitle'>
+                <h3>СОГЛАСОВАНО:</h3>
+            </div>
+            <div class='right'>
+                <div class='userInfo'>
+                    <table>
+                        <tbody id='approvers'>
+                            <tr id="approver_0">
+                                <td>
+                                    <input id="approver_0_post" class='form-control'
+                                           placeholder='Должность согласователя' />
+                                    <input id="approver_0_fullName" class='form-control'
+                                           placeholder='ФИО согласователя' />
+                                </td>
+                                <td style="width:1%; white-space:nowrap">
+                                    <div class="btn-group pull-right"
+                                         style="width: auto; min-width: 80px; margin-left:10px;">
+                                        <button type="button" class="btn btn-default"
+                                                onclick="addUserAfter('#approver_0')"
+                                                title="Добавить позицию ниже">
+                                            <span class="glyphicon glyphicon-plus"
+                                                  aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default"
+                                                onclick="removeUser('#approver_0')"
+                                                style="display:none"
+                                                title="Удалить позицию">
+                                            <span class="glyphicon glyphicon-remove"
+                                                  aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <table class='table table-striped table-bordered table-hover'
+                   style='margin-top:100px;'>
+                <thead>
+                    <tr>
+                        <th class="col-sm-1 tableGroupRow" style="background-color: #E8E8E8;">
+                            Поз.
+                        </th>
+                        <th class="col-sm-4 tableGroupRow" style="background-color: #E8E8E8;">
+                            Перечень основных требований
+                        </th>
+                        <th class="col-sm-6 tableGroupRow" colspan='2' style="background-color: #E8E8E8;">
+                            Содержание требований
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id='requirements'>
+                    <tr id="req_0" style="background-color: #b3ff99;" data-reqLevel='0'>
+                        <td class='tableGroupRow'>1.</td>
+                        <td colspan='2' class='tableGroupRow'>
+                            <input class='form-control' placeholder='Наименование группы требований' />
+                        </td>
+                        <td style="width:1%;white-space:nowrap">
+                            <div class="btn-group pull-right" style="width: auto;min-width: 85px;">
+                                <button type="button" class="btn btn-default"
+                                        onclick='addRequirementGroupAfter("#req_0")'
+                                        title="Добавить новую запись ниже">
+                                    <span class="glyphicon glyphicon-plus"
+                                          aria-hidden="true"></span>
+                                </button>
+                                <a class="btn btn-default" href="#" title="Удалить позицию">
+                                    <span class="glyphicon glyphicon-remove"
+                                          aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="req_0_0" data-reqLevel='1'>
+                        <td class='tableGroupRow'>1.1.</td>
+                        <td class='tableGroupRow'>
+                            <input class='form-control' placeholder='Наименование требования' />
+                        </td>
+                        <td>
+                            <div class='btnGroup'>
+                                <button class='roundBtn addBtn btnRow'>
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                                <button class='roundBtn editBtn btnRow'>
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                </button>
+                                <button class='roundBtn deleteBtn btnRow'>
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <input class='form-control' placeholder='Содержание требования' />
+                        </td>
+                        <td style="width:1%;white-space:nowrap">
+                            <div class="btn-group pull-right" style="width: auto;min-width: 85px;">
+                                <!--<a class="btn btn-default" href="#" title="Редактировать содержание">
+                                    <span class="glyphicon glyphicon-edit"
+                                          aria-hidden="true"></span>
+                                </a>-->
+                                <button type="button" class="btn btn-default" data-toggle="modal"
+                                        data-target="#myModal" title="Добавить новую запись ниже">
+                                    <span class="glyphicon glyphicon-plus"
+                                          aria-hidden="true"></span>
+                                </button>
+                                <a class="btn btn-default" href="#" title="Удалить позицию">
+                                    <span class="glyphicon glyphicon-remove"
+                                          aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="height:50px;">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-primary" title="Сохранить изменения">
+                        <span class="glyphicon glyphicon-floppy-save"
+                              aria-hidden="true"></span> Сохранить
+                    </button>
+                    <button class="btn btn-default" type="button" title="Отмена изменений">
+                        <span class="glyphicon glyphicon-ban-circle"
+                              aria-hidden="true"></span> Отмена
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

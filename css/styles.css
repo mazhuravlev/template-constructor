@@ -1,0 +1,94 @@
+﻿.body-background {
+	background-color: #E8E8E8;
+}
+
+.page {
+	background-color: white;
+	width: 80em;
+	margin: auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	
+	padding: 20px 50px 20px 50px;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.copyrights {
+	text-align: center;
+	margin: auto;
+}
+
+.userInfo {
+	text-align: right;
+	width: 50%;
+	display: inline-block;
+}
+
+.right{
+	text-align: right;
+}
+
+.userInfo input {
+	margin: 5px;
+	text-align: right;
+}
+
+.userInfoBlock {
+	margin-bottom: 30px;
+}
+
+.documentNameOrAddress input {
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.documentNameOrAddress {
+	padding: 100px 80px 30px 80px;
+}
+
+.row {
+	display: inline-block;
+    width: 250px;
+	background-color: red;
+}
+
+.blockTitle {
+	text-align: right;
+	padding-top: 50px;
+}
+
+.tableGroupRow {
+	text-align: center;
+	font-weight: bold;
+}
+
+.roundBtn {  
+  display:block;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  padding: 0px;
+  background-color: transparent;
+}
+
+.addBtn{
+    color: green;
+}
+
+.editBtn{
+    color: #ffcc00;
+}
+
+.deleteBtn{
+    color: red;
+}
+
+.btnGroup{
+    width: 60px;
+    float : right;
+}
+
+.btnRow{
+    display:inline;
+}
